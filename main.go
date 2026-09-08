@@ -45,7 +45,7 @@ func main() {
 		var res string
 		switch {
 		case strings.HasPrefix(line, "POOL "):
-			cleanLine, _ := strings.CutPrefix(line, "POOL ")
+			_, cleanLine, _ := strings.Cut(line, " ")
 			backends := strings.Split(cleanLine, " ")
 			res = rr.Pool(backends)
 		case line == "PICK":
