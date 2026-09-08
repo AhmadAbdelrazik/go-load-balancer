@@ -51,7 +51,7 @@ func (r *WeightedRoundRobin) Pick() string {
 
 func (r *WeightedRoundRobin) PickN(n int) string {
 	results := make([]string, 0, n)
-	for range n {
+	for i := 0; i < n; i++ {
 		results = append(results, r.Pick())
 	}
 
