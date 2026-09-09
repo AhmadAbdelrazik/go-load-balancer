@@ -64,7 +64,11 @@ func (l *LeastConnections) Done(backend string) string {
 			continue
 		}
 
-		l.Backends[i].Connections = max(0, b.Connections-1)
+		if b.Connections-1 > 0 {
+			l.Backends[i].Connections = b.Connections - 1
+		} else {
+			l.Backends[i].Connections = 0
+		}
 		break
 	}
 	return "OK"
